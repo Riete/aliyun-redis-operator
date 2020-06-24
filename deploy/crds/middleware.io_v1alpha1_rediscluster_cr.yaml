@@ -1,0 +1,34 @@
+apiVersion: middleware.io/v1alpha1
+kind: RedisCluster
+metadata:
+  name: redis-cluster
+  namespace: ops-middleware
+spec:
+  # Add fields here
+  # slave num per master
+  replicas: 1
+  # redis major version, support 3 or 4
+  majorVersion: 3
+  env:
+  - name: REDIS_PORT # listen port, optional
+    value: "6379"
+  - name: REDIS_PASSWORD # password, optional
+    value: "redis"
+  - name: MAX_MEMORY # maxmemory, kb mb gb, optional
+    value: "50mb"
+  resources:
+    limits:
+      cpu: 30m
+      memory: 100Mi
+    requests:
+      cpu: 30m
+      memory: 100Mi
+  # storage, optional
+  # storageClass: alicloud-nas
+  # storageSize: 100Mi
+  # isolate，if true，(replicas + 1) * 3 worker nodes required, optional
+  # isolated: true
+  # expose prometheus metrics, optional
+  metrics: true
+  # able to schedule to master nodes，optional
+  # masterSchedule: true
