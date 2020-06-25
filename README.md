@@ -4,6 +4,7 @@
 * kubernetes: v1.14+
 * go version: v1.13+
 * docker version: 17.03+
+* redis version: 3.2.12, 4.0.14
 
 
 ### build 
